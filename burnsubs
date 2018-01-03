@@ -1,0 +1,30 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+import os
+from easygui import *
+
+'''Getting user information through easygui'''
+videoFile = fileopenbox("Inform the file to be converted: ").replace(' ', '\ ')
+subtitleFile = fileopenbox("Inform the ASS subtitle file: ").replace(' ', '\ ')
+choices = ["ProRes", "H.264"]
+convertTo = choicebox("Destination format", "Destination format", choices)
+if convertTo.upper() == "PRORES":
+    convertTo = "P"
+else:
+    convertTo = "H"
+convertedFile = filesavebox("Type Converted File Name: ").replace(' ', '\ ')
+'''Selecting command used and file exntension:'''
+if convertTo.upper() == "P":
+    convertTo = ' -c:v prores -profile:v 1 -c:a copy -vf subtitles='
+    extension = '.mov'
+else:
+    convertTo = ' -c:v h264 -c:a copy -vf subtitles='
+    extension = '.mp4'
+
+'''Treating missing file:'''
+if videoFile == '' or subtitleFile == '' or convertedFile == '':
+    msgbox("Empty data received when obtaining necessary files!")
+
+'''conversion line:'''
+os.system('ffmpeg -i ' + videoFile + convertTo + subtitleFile + ' ' + convertedFile + extension)

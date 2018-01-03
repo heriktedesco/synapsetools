@@ -1,0 +1,31 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+import os
+from easygui import * 
+
+'''Getting user information through easygui'''
+dcpVideoFile = fileopenbox("Inform the DCP Video File: ").replace(' ', '\ ')
+dcpAudioFile = fileopenbox("Inform the DCP Audio File: ").replace(' ', '\ ')
+choices = ["ProRes", "H.264"]
+convertTo = choicebox("Destination format", "Destination format", choices)
+if convertTo.upper() == "PRORES":
+	convertTo = "P"
+else:
+	convertTo = "H"
+convertedFile = filesavebox("Type Converted File Name: ").replace(' ', '\ ')
+
+'''Selecting command used and file exntension:'''
+if convertTo.upper() == "P":
+    convertTo = ' -c:v prores -c:a copy '
+    extension = '.mov'
+else:
+    convertTo = ' -vcodec h264 -c:a copy '
+    extension = '.mp4'
+
+'''Treating missing file:'''
+if dcpVideoFile == '' or dcpAudioFile == '' or convertedFile == '':
+    msgbox("Empty data received when obtaining necessary files!")
+
+'''conversion line:'''
+os.system('ffmpeg -i ' + dcpVideoFile + ' -i ' + dcpAudioFile + convertTo + convertedFile + extension)
