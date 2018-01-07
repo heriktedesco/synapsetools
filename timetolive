@@ -1,0 +1,11 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+import os
+from easygui import *
+filename = fileopenbox("Inform the file to calculate Down/up time:", default='*',filetypes = ["*.*"]).replace(" ", "\ ")
+filesize = os.path.getsize(filename) * 8
+choice = choicebox("What is the down/up speed?", "timetolive tool", ["5 mbps", "10 mbps", "15 mbps", "20 mbps", "25 mbps", "30 mbps", "35 mbps", "40 mbps", "45 mbps", "50 mbps"])
+speed = int(choice.replace(" mbps", ""))
+tempo = filesize // (speed * 1024 * 1024)
+msgbox("Time to file to be available is: " + str(tempo // 86400) + " dias, " + str((tempo % 86400) // 3600) + " horas, " + str(((tempo % 86400) % 3600)//60) + " minutos, " + str(((tempo % 86400) % 3600)%60) + " Segundos (aproximadamente).")
