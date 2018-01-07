@@ -7,6 +7,7 @@ Tools available:
 * burnsub: Burns an ass format subtitle into a video file, currently does not deals well with multiple audio channels on ProRes files.   
 * dcptovideo: Convert DCP video and audio MFX files to ProRes or H.264 files, currently need improvement when dealing with H.264.   
 * playdcp: Basic tool to play DCP files directly using ffplay. REQUIRES A BEEFY COMPUTER!   
+* timetolive: Try to predict the time it will take to upload or download a file from the internet given a certain speed in megabits per second.   
    
    
    
