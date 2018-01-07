@@ -5,8 +5,8 @@ import os
 from easygui import *
 
 '''Getting user information through easygui'''
-videoFile = fileopenbox("Inform the file to be converted: ").replace(' ', '\ ')
-subtitleFile = fileopenbox("Inform the ASS subtitle file: ").replace(' ', '\ ')
+videoFile = fileopenbox("Inform the file to be converted: ", default='*',filetypes = ["*.avi", "*.asf", "*.mov", "*.mp4", "*.m4v", "*.flv", "*.swf", "*.mpg", "*.wmv", "*.mkv", "*.3g2", "*.3gp", "*.mpeg", "*.rm", "*.rmvb", "*.vob", "*.mxf"] , multiple=False).replace(' ', '\ ')
+subtitleFile = fileopenbox("Inform the ASS subtitle file: ", default='*',filetypes = ["*.ass"]).replace(' ', '\ ')
 choices = ["ProRes", "H.264"]
 convertTo = choicebox("Destination format", "Destination format", choices)
 if convertTo.upper() == "PRORES":

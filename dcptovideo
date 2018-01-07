@@ -2,18 +2,18 @@
 # -*- coding: utf-8 -*-
 
 import os
-from easygui import * 
+from easygui import *
 
 '''Getting user information through easygui'''
-dcpVideoFile = fileopenbox("Inform the DCP Video File: ").replace(' ', '\ ')
-dcpAudioFile = fileopenbox("Inform the DCP Audio File: ").replace(' ', '\ ')
+dcpVideoFile = fileopenbox("Inform the DCP Video File: ", default='*',filetypes = ["*.mxf"]).replace(' ', '\ ')
+dcpAudioFile = fileopenbox("Inform the DCP Audio File: ", default='*',filetypes = ["*.mxf"]).replace(' ', '\ ')
 choices = ["ProRes", "H.264"]
 convertTo = choicebox("Destination format", "Destination format", choices)
 if convertTo.upper() == "PRORES":
 	convertTo = "P"
 else:
 	convertTo = "H"
-convertedFile = filesavebox("Type Converted File Name: ").replace(' ', '\ ')
+convertedFile = filesavebox("Type Converted File Name (without extension): ").replace(' ', '\ ')
 
 '''Selecting command used and file exntension:'''
 if convertTo.upper() == "P":

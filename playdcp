@@ -5,8 +5,8 @@ import os
 from easygui import *
 
 '''Getting user information through easygui'''
-dcpVideoFile = fileopenbox("Inform the DCP Video File: ").replace(' ', '\ ')
-dcpAudioFile = fileopenbox("Inform the DCP Audio File: ").replace(' ', '\ ')
+dcpVideoFile = fileopenbox("Inform the DCP Video File: ", default='*',filetypes = ["*.mxf"]).replace(' ', '\ ')
+dcpAudioFile = fileopenbox("Inform the DCP Audio File: ", default='*',filetypes = ["*.mxf"]).replace(' ', '\ ')
 choices = ["Full Size (100% of DCP original dimensions)", "Half Size (50% of DCP original dimensions)", "Ultra Low Res (25% of DCP original dimensions)"]
 convertTo = choicebox("Reproduction dimensions", "Reproduction dimensions", choices).replace("Full Size (100% of DCP original dimensions)", "0").replace("Half Size (50% of DCP original dimensions)", "1").replace("Ultra Low Res (25% of DCP original dimensions)", "2")
 
