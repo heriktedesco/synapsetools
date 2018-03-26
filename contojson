@@ -7,7 +7,7 @@ import sys
 
 def escreveArquivoJson(plataforma, linha):
     file.write('\t\t"PLATAFORMA": "' + str(plataforma) + '",\n')
-    file.write('\t\tid: "' + str(data[linha]) + '"\n')
+    file.write('\t\t"id": "' + str(data[linha]) + '"\n')
 
 def adicionaPlataforma(col, plat, ln):
     if data[col].upper() == 'Y':
@@ -25,7 +25,9 @@ for row in csv_f:
     data = row
     file = open('contratos.json','a')
     file.write('{\n')
-    file.write('\t"' + 'CODIGO INTERNO": ' + str(data[0]) + ',\n')
+    file.write('\t"CODIGO INTERNO": ' + str(data[0]) + ',\n')
+    file.write('\t"CODIGO DE PROGRAMA": "' + str(data[19]) + '",\n')
+    file.write('\t"FORNECEDOR": "' + str(data[20]) + '",\n')
     file.write('\t"PLATAFORMAS": [\n')
     adicionaPlataforma(1,"now", 2)
     adicionaPlataforma(3,"itunes", 4)
